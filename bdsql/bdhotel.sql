@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-12-2023 a las 19:12:11
+-- Tiempo de generación: 06-12-2023 a las 20:50:45
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -251,7 +251,7 @@ CREATE TABLE `productos` (
 
 INSERT INTO `productos` (`idProd`, `nombre`, `descripcion`, `cantidad`, `precio`, `iva`, `estado`, `foto`, `borrado`) VALUES
 (3, 'LIMPIEZA CUARTO', 'SERVICIO', 1, 50000, 0.19, 'DISPONIBLE', 'E20231206115858.png', 0),
-(4, 'SPAY BELLEZA', 'SERVICIO', 1, 45000, 0.19, 'DISPONIBLE', 'E20231206115840.png', 0),
+(4, 'SPA Y BELLEZA', 'SERVICIO', 1, 45000, 0.19, 'DISPONIBLE', 'E20231206115840.png', 0),
 (6, 'CAFE MOLIDO', 'PRODUCTO', 1, 15000, 0.19, 'DISPONIBLE', 'E20231206120402.png', 0),
 (7, 'PASEO ECOLOGICO', 'SERVICIO', 1, 35000, 0.19, 'DISPONIBLE', 'E20231206124147.png', 0);
 
@@ -294,6 +294,13 @@ CREATE TABLE `reservas` (
   `cant_personas` int(10) NOT NULL,
   `borrado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`idreserva`, `idcliente`, `idhabitacion`, `fecha_inicio`, `fecha_final`, `cant_personas`, `borrado`) VALUES
+(1, '38879331', 101, '2023-12-06', '2023-12-08', 4, 0);
 
 -- --------------------------------------------------------
 
@@ -456,7 +463,7 @@ ALTER TABLE `gest_alqui`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idreserva` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `idreserva` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
