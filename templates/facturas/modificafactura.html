@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+<div class="container"><br>
+    <form action="/actualizafactura" method="post" enctype="multipart/form-data">
+        <h3>Modificar factura</h3>
+        <hr>
+        <div class="row">
+            <div class="col-4">
+                <label for="numero"><b>Factura No</b></label><br>
+                <input readonly value="{{fact[0]}}" class="form-control" type="number" name="numero">
+                {{mensaje}}
+                <br>
+                <label for="idRegistro"><b>Registro No</b></label>
+                <input value="{{fact[1]}}" class="form-control" type="text" name="idRegistro">
+                <br></div>
+                <div class="col-4">
+                <label for="idCliente"><b>Cliente No</b></label>
+                <input required value="{{fact[2]}}" class="form-control" type="number" name="idCliente">
+                <br>
+                <label for="idcomanda"><b>Comanda No</b></label>
+                <input required value="{{fact[3]}}" class="form-control" type="number" name="idcomanda">
+                <br>
+            </div>
+            <div class="col-4">
+                <label for="fecha"><b>Fecha</b></label>
+                <input required value="{{fact[4]}}" class="form-control" type="text" name="fecha">
+                <br>
+                <label for="total"><b>Total</b></label>
+                <input required value="{{fact[5]}}" class="form-control" type="number" name="total">
+                <br>
+                <input type="submit" class="btn btn-success" class="bi bi-arrow-left" value="Guardar">
+                <a href="/facturas" class="btn btn-primary"> Regresar</a>
+            </div>
+    </form>
+    </div>
+    </body>
+    </html>
