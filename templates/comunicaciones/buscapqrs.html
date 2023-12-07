@@ -2,17 +2,18 @@
 
 <div class="container">
     <div id="resultado"><br>
-        <h5>Buscar Cliente</h5>
+        <h5>Buscar PQRS</h5>
         <hr>
         <div class="container"><br>
             <table class="table table-sm">
                 <thead class="table-dark">
                     <tr>
-                        <th>ID Cliente</th>
-                        <th>Nombre</th>
-                        <th>Celular</th>
-                        <th>Email</th>
+                        <th>id PQRS</th>
+                        <th>Cliente</th>
                         <th>Fecha</th>
+                        <th>tipo</th>
+                        <th>Descripción</th>
+                        <th>Estado</th>
                         <th colspan="2">Acciones</th>
                     </tr>
                 </thead>
@@ -31,10 +32,10 @@
                         <td>{{miData[4]}}</td>
                         <td>{{miData[5]}}</td>
                         <td>
-                            <a href="/modificareserva/{{miData[0]}}" class="btn btn-warning btn-sm"><i
+                            <a href="/modificarpqrs/{{miData[0]}}" class="btn btn-warning btn-sm"><i
                                     class="bi bi-pencil-square"></i></a>
-                            <a onclick="return confirm('¿Esta seguro de que desea eliminar esta reserva')"
-                                href="borrareserva/{{miData[0]}}" class="btn btn-danger btn-sm"><i
+                            <a onclick="return confirm('¿Esta seguro de que desea eliminar esta PQRS?')"
+                                href="/borrarpqrs/{{miData[0]}}" class="btn btn-danger btn-sm"><i
                                     class="bi bi-trash"></i></a>
                         </td>
 
@@ -52,6 +53,3 @@
             </body>
 
             </html>
-</body>
-
-</html>

@@ -1,6 +1,6 @@
 {% include 'header.html' %}
 <div class="container"><br>
-    <h3>Agregar Reservas</h3>
+    <h3>Nueva reserva</h3>
     <hr>
     <div class="container"><br>
         <form action="/guardareserva" method="post" enctype="multipart/form-data">
@@ -35,7 +35,9 @@
                     <label for="cant_personas"><b>Acompañantes</b></label>
                     <input required type="number" class="form-control" name="cant_personas">
                     <br><br>
-                    <input type="submit" class="btn btn-success float-right" class="bi bi-arrow-left" value="Guardar">
+                <input type="submit" class="btn btn-success" class="bi bi-arrow-left" value="Guardar">
+                <a href="/reservas" class="btn btn-primary"> Regresar</a><br><br>
+                </div>
                 </div>
         </form>
     </div>

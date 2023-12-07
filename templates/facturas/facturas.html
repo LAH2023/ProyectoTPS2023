@@ -14,9 +14,12 @@
     <title>Hotel Maravilla Natural</title>
 </head>
 <br>
-<div class="container">
-    <h3>Facturación</h3>
+<div class="container"><br>
+    <h3>Facturas</h3>
     <hr>
+    <a href="/agregafactura" class="btn btn-success btn-sm">
+        <i class="fas fa-credit-card"></i> Nueva factura</a>
+    <br><br>
     
     {% if request.args.get('msg2') %}
         <p><b>{{ request.args.get('msg2') }}</b></p>
@@ -73,10 +76,7 @@
                 <td>{{fact[4]}}</td>
                 <td>{{fact[5]}}</td>
                 <td>
-                    <a id="boton_ver" href="/modificaventa/{{fact[0]}}" class="btn btn-primary btn-sm"><i class="bi bi-printer"></i></a>  
-                    <a onclick="return confirm('¿Seguro de que desea eliminar esta factura?')" href="/borraventa/{{fact[0]}}"
-                        class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
-                    
+                    <a id="boton_ver" href="/modificaventa/{{fact[0]}}" class="btn btn-primary btn-sm"><i class="bi bi-printer"></i></a>                      
                 </td>
             </tr>
             {% endfor %}

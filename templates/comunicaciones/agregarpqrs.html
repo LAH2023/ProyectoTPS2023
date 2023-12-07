@@ -1,13 +1,13 @@
 {% include 'header.html' %}
 <div class="container"><br>
-    <h3>Agregar Comunicación</h3>
+    <h3>Nueva PQRS</h3>
     <hr>
     <div class="container"><br>
         <form action="/guardapqrs" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     {{mensaje}}
-                    <label for="numero"><b>Id Comunicaciones</b></label><br>
+                    <label for="numero"><b>Id PQRS</b></label><br>
                     <input required type="number" class="form-control" name="numero">
                     <br>
                     <label for="idcliente"><b>id Cliente</b></label>
@@ -21,8 +21,9 @@
                     <label for="tipo"><b>Tipo</b></label>
                     <select required class="form-control" name="tipo">
                         <option value="PETICION">PETICIÓN</option>
+                        <option value="FELICITACIÓN">FELICITACIÓN</option>
                         <option value="QUEJA">QUEJA</option>
-                        <option value="RECOMENDACION">RECOMENDACIÓN</option>
+                        <option value="RECOMENDACIÓN">RECOMENDACIÓN</option>
                         <option value="SUGERENCIA">SUGERENCIA</option>
                         </option>
                     </select>

@@ -1,7 +1,7 @@
 {% include 'header.html' %}
 <div class="container"><br>
     <form action="/actualizaproducto" method="post" enctype="multipart/form-data">
-        <h3>Modificar datos del producto</h3><hr>
+        <h3>Modificar datos del producto/servicio</h3><hr>
         <div class="row">
             <div class="col-4">
                 <label for="numero"><b>Id producto</b></label>
@@ -9,10 +9,10 @@
                 {{mensaje}}
                 <br>
                 <label for="nomProd"><b>Nombre del producto</b></label>
-                <input readonly value="{{prod[1]}}"  class="form-control"  type="text" name="nomProd">
+                <input value="{{prod[1]}}"  class="form-control"  type="text" name="nomProd">
                 <br>
                 <label for="descripcion"><b>Categoria</b></label>
-                <input readonly required value="{{prod[2]}}" class="form-control" type="text" name="descripcion">
+                <input required value="{{prod[2]}}" class="form-control" type="text" name="descripcion">
                 <br>
                 <label for="cantidad"><b>Cantidad</b></label>
                 <input required value="{{prod[3]}}"  class="form-control"  type="number" name="cantidad">

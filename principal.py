@@ -110,7 +110,7 @@ def login():
         conexion.commit()
         return render_template("principal.html", nom=resultado[0][0], disp=disponible[0][0], ocup=ocupada[0][0], limp=limpieza[0][0], mant=mantenimiento[0][0], totveh=totalveh[0][0], totprod=totalprod[0][0],totpqrs=totalpqrs[0][0], totserv=totalserv[0][0])
     else:
-        return render_template("login.html",msg="Credenciales incorrectas")
+        return render_template("usuarios/login.html",msg="Credenciales incorrectas")
     
 # Establecemos la ruta a templates/principal
 
@@ -140,8 +140,7 @@ def buscarClientes():
     if request.method == "POST":
        search = request.form['nombre']
        sql = ("SELECT * FROM clientes WHERE nombre='%s' ORDER BY nombre ASC" % (search,))
-
-            #"SELECT nombre, movil FROM clientes LIKE '% %';"
+ #"SELECT nombre, movil FROM clientes LIKE '% %';"
 
        cursor = conexion.cursor()
        cursor.execute(sql)
@@ -284,6 +283,17 @@ def registro():
         return render_template("registro/registro.html",res = resultado)
     else:
         return redirect('/')
+    
+@prog.route('/buscaregistro', methods=['GET','POST'])
+def buscaregistro():
+    if request.method == "POST":
+       search = request.form['buscar']
+       sql = ("SELECT * FROM registro WHERE idregistro='%s' ORDER BY idregistro DESC" % (search,))
+       cursor = conexion.cursor()
+       cursor.execute(sql)
+       resultadoBusqueda = cursor.fetchone()
+       conexion.commit()
+       return render_template("registro/buscaregistro.html", miData=resultadoBusqueda)
 
 @prog.route('/agregaregistro')
 def agregaregistro():
@@ -293,7 +303,17 @@ def agregaregistro():
        cursor.execute(sql)
        registro = cursor.fetchall()
        conexion.commit()
-       return render_template("registro/agregaregistro.html",  reg = registro) 
+       sql = "SELECT idcliente FROM clientes WHERE borrado=0"
+       cursor = conexion.cursor()
+       cursor.execute(sql)
+       cliente = cursor.fetchall()
+       conexion.commit()
+       sql = "SELECT idhabitacion FROM habitaciones WHERE borrado=0"
+       cursor = conexion.cursor()
+       cursor.execute(sql)
+       habitacion = cursor.fetchall()
+       conexion.commit()
+       return render_template("registro/agregaregistro.html",  reg = registro, clie = cliente, hab = habitacion ) 
     
 
 @prog.route("/guardaregistro", methods=['POST'])
@@ -841,6 +861,17 @@ def comunicaciones():
         return render_template("comunicaciones/pqrs.html",res=resultado)
     else:
         return redirect('/')
+    
+@prog.route('/buscapqrs', methods=['GET','POST'])
+def buscapqrs():
+    if request.method == "POST":
+       search = request.form['buscar']
+       sql = ("SELECT * FROM comunicaciones WHERE idcliente='%s'" % (search,))
+       cursor = conexion.cursor()
+       cursor.execute(sql)
+       resultadoBusqueda = cursor.fetchone()
+       conexion.commit()
+       return render_template("comunicaciones/buscapqrs.html", miData=resultadoBusqueda)
 
 @prog.route('/agregarpqrs')
 def agregarpqrs():
@@ -888,13 +919,14 @@ def actualizapqrs():
    misComunicaciones.actualiza(comunicacion)
    return redirect("/comunicaciones")
 
-@prog.route("/borrapqrs<id>")
-def borrapqrs(id):
+@prog.route("/borrarpqrs<id>")
+def borrarpqrs(id):
     if session.get('loginOk'):
         misComunicaciones.borrar(id)
         return redirect("/comunicaciones")
     else:
         return redirect('/')
+    
 
 # //////////////////FACTURAS ANDRES FELIPE\\\\\\\\\\\\\\\\\\\\\
     
