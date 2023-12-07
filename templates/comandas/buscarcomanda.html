@@ -1,13 +1,12 @@
 {% include 'header.html' %}
 <div class="container"><br>
-    <h3>Detalle de Ventas</h3>
+    <h3>Comandas de Venta </h3>
     <hr>
     {% if (res) %}
 <div class="alert alert-success" role="alert">
     <strong>Exito!</strong> Hay resultados para la búsqueda.
 </div>
-<!--CREAR UN FORMMULARIO PARA DETALLE DE COMPRA---> 
-<form action="/guardaventa" method="post">
+
 {{mensaje}}
     <table class="table table-sm">
         <thead class="table-dark">
@@ -58,6 +57,5 @@
 <tr>
     {% endif %}
 </table>
-    <input type="submit" class="btn btn-success" class="bi bi-arrow-left" value="Guardar">
-    </form>
+   
 </div>
