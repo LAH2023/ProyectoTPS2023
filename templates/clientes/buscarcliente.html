@@ -1,57 +1,52 @@
 {% include 'header.html' %}
+<div class="container"><br>
+    <h3>Buscar Clientes</h3>
+    <hr>
+    {% if (miData) %}
+    <div class="alert alert-success" role="alert">
+        <strong>Exito!</strong> Hay resultados para la búsqueda.
+    </div>
 
-<div class="container">
-    <div id="resultado"><br>
-        <h5>Buscar Cliente</h5>
-        <hr>
-        <div class="container"><br>
-            <table class="table table-sm">
-                <thead class="table-dark">
-                    <tr>
-                        <th>ID Cliente</th>
-                        <th>Nombre</th>
-                        <th>Celular</th>
-                        <th>Email</th>
-                        <th>Fecha</th>
-                        <th colspan="2">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
+    {{mensaje}}
+    <table class="table table-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Id cliente</th>
+                <th>Nombre</th>
+                <th>Nacionalidad</th>
+                <th>Celular</th>
+                <th>Email</th>
+                <th>Fecha Nacimiento</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in miData %}
+            <tr>
+                <td>{{cliente[0]}}</td>
+                <td>{{cliente[1]}}</td>
+                <td>{{cliente[2]}}</td>
+                <td>{{cliente[3]}}</td>
+                <td>{{cliente[4]}}</td>
+                <td>{{cliente[5]}}</td>
+                <td colspan="2">
+                <a href="/modificacliente/{{cliente[0]}}" class="btn btn-warning btn-sm"><i
+                    class="bi bi-pencil-square"></i></a>
+                <a onclick="return confirm('¿Seguro de que desea eliminar este cliente?')" href="/borracliente/{{cliente[0]}}"
+                        class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        {% else %}
 
-                    {% if (miData) %}
+        <div class="alert alert-warning" role="alert">
+            <strong>Atención!</strong> No hay resultados para la búsqueda. <a href="/principal"
+                class="alert-link">Intente de
+                nuevo</a>.
+        </div>
+        <tr>
+            {% endif %}
+    </table>
 
-                    <div class="alert alert-success" role="alert">
-                        <strong>Exito!</strong> Hay resultados para la búsqueda.
-                    </div>
-                    <tr>
-                        <td>{{miData[0]}}</td>
-                        <td>{{miData[1]}}</td>
-                        <td>{{miData[2]}}</td>
-                        <td>{{miData[3]}}</td>
-                        <td>{{miData[4]}}</td>
-                        <td>{{miData[5]}}</td>
-                        <td>
-                            <a href="/modificareserva/{{miData[0]}}" class="btn btn-warning btn-sm"><i
-                                    class="bi bi-pencil-square"></i></a>
-                            <a onclick="return confirm('¿Esta seguro de que desea eliminar esta reserva')"
-                                href="borrareserva/{{miData[0]}}" class="btn btn-danger btn-sm"><i
-                                    class="bi bi-trash"></i></a>
-                        </td>
-
-                        {% else %}
-
-                        <div class="alert alert-warning" role="alert">
-                            <strong>Atención!</strong> No hay resultados para la búsqueda. <a href="/principal"
-                                class="alert-link">Intente de nuevo</a>.
-                        </div>
-                    <tr>
-                        {% endif %}
-                </tbody>
-            </table>
-
-            </body>
-
-            </html>
-</body>
-
-</html>
+</div>

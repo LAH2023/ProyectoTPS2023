@@ -133,21 +133,19 @@ def clientes():
     else:
         return redirect('/')
 
-# Buscador Clientes
+# Buscador de Clientes
 
-@prog.route('/buscarClientes', methods=['GET','POST'])
+@prog.route('/buscarClientes', methods=['GET', 'POST'])
 def buscarClientes():
     if request.method == "POST":
-       search = request.form['nombre']
-       sql = ("SELECT * FROM clientes WHERE nombre='%s' ORDER BY nombre ASC" % (search,))
- #"SELECT nombre, movil FROM clientes LIKE '% %';"
-
-       cursor = conexion.cursor()
-       cursor.execute(sql)
-       resultadoBusqueda = cursor.fetchone()
-       conexion.commit()
-       return render_template("clientes/buscarcliente.html", miData=resultadoBusqueda)
-   
+        search = request.form['nombre']
+        sql = "SELECT * FROM clientes WHERE nombre LIKE %s ORDER BY nombre ASC"
+        search_pattern = f"%{search}%"
+        cursor = conexion.cursor()
+        cursor.execute(sql, (search_pattern,))
+        resultadoBusqueda = cursor.fetchall()
+        conexion.commit()
+        return render_template("clientes/buscarcliente.html", miData=resultadoBusqueda)  
    
 @prog.route('/agregacliente')
 def agregacliente():

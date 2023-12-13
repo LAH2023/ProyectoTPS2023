@@ -19,7 +19,7 @@ class Clientes:
         self.cursor.execute(sql)
         self.conDB.commit()
 
-
+    
 # Funcion buscar
 
     def buscar(self, num):
